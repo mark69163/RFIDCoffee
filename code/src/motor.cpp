@@ -1,5 +1,5 @@
-#include "motor.h"
 #include <Arduino.h>
+#include "motor.h"
 
 Motor::Motor(byte pwmPin1, byte pwmPin2, byte maxSpeed, byte minSpeed, bool forwardDir, byte encoderPin1){
     _maxSpeed = maxSpeed;

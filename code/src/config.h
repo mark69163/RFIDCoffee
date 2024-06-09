@@ -5,5 +5,8 @@
 //motor config
 #define motPwmPin1  14   //D5
 #define motPwmPin2  12   //D6
-#define motEncPin1  A0  //ADC0
+#define motEncPin1  A0   //ADC0
 
+//neopixel config
+#define neopixelPin 13  //D7
+#define numOfPixels 8   
