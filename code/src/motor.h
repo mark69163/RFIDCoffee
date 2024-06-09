@@ -13,8 +13,9 @@ class Motor{
          
          bool _forwardDir;
 
-        const unsigned long testJamDuration = 5000; //5s jam test duration
         const int rpm = 68;
+        unsigned long testJamDuration = round((rpm*100)); //jam test duration
+
         
 
     public:
