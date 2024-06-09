@@ -1,5 +1,5 @@
-#include <motor.h>
-#include "Arduino.h"
+#include "motor.h"
+#include <Arduino.h>
 
 Motor::Motor(byte pwmPin1, byte pwmPin2, byte maxSpeed, byte minSpeed, bool forwardDir, byte encoderPin1){
     _maxSpeed = maxSpeed;
@@ -23,13 +23,10 @@ _forwardDir = 0;
 
 };
 
-bool Motor::begin(){
+void Motor::begin(){
 
-pinMode(_pwmPin1,OUTPUT);
-pinMode(_pwmPin2,OUTPUT);
-
-if(!testJam())return 0;
-else return 1;
+    pinMode(_pwmPin1,OUTPUT);
+    pinMode(_pwmPin2,OUTPUT);
 
 };
 
@@ -51,7 +48,7 @@ else{
 
 void Motor::feed(){
 //feed forward
-if(_forwardDir){
+if(!_forwardDir){
     analogWrite(Motor::_pwmPin1,Motor::_maxSpeed);
     analogWrite(Motor::_pwmPin2,0);
 }
@@ -80,15 +77,14 @@ bool Motor::testJam(){
             //drive forward
             if(turnCounter<=rpm)feed(_forwardDir,127);
             //drive backwards
-            else if (turnCounter>=2*rpm)feed(!_forwardDir,127);
+            else if (turnCounter<2*rpm && turnCounter>rpm)feed(!_forwardDir,127);
         }
         //Test Success: forward and backwards movement was successfully detected within the jamTestDuration
-        if(turnCounter>=3*rpm){
+        if(turnCounter>=2*rpm){
             stop();
             return 0;
         }
         delay(10);
-
     }
 
     //Test Fail
