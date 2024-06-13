@@ -10,9 +10,9 @@ class Neopixel{
     int _neopixel_pin;
   public:
     Neopixel(int numOfPixel,int pin);
-    void dispTransactionLoading();
-    void dispTransactionProcessing();
+    void dispTransactionProcessing(byte r, byte g,byte b);
     void dispTransactionSuccess();
     void dispTransactionFaliure();
     void dispStandby();
+    void dispOff();
 };

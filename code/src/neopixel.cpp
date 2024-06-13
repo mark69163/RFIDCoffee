@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <Adafruit_NeoPixel.h>
+//#include <Adafruit_NeoPixel.h>
 #include "neopixel.h"
 
 Neopixel::Neopixel(int numOfPixel, int pin) 
@@ -17,15 +17,31 @@ void Neopixel::dispStandby() {
   pixels.show(); 
 }
 
-void Neopixel::dispTransactionLoading(){
+void Neopixel::dispTransactionProcessing(byte r, byte g,byte b){
   pixels.clear();
 
   for(int i=0; i<_numOfPixels; i++) {
-    pixels.setPixelColor(i, pixels.Color(0, 0, 127));
+    pixels.setPixelColor(i, pixels.Color(r, g, b));
     pixels.show(); 
     delay(100);
   }
     pixels.clear();
     pixels.show(); 
     delay(100);
+}
+
+void Neopixel::dispTransactionFaliure(){
+  pixels.clear();
+
+  for(int i=0; i<_numOfPixels; i++) {
+    pixels.setPixelColor(i, pixels.Color(127, 0, 0));
+  }
+
+  pixels.show();
+
+}
+
+void Neopixel::dispOff(){
+  pixels.clear();
+  pixels.show();
 }
