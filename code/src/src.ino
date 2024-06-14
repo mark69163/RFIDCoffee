@@ -4,20 +4,20 @@
 #include "neopixel.h"
 #include "lcd.h"
 
-//Motor motor(motPwmPin1,motPwmPin2,motEncPin1);
+Motor motor(motPwmPin1,motPwmPin2,motEncPin1,motEncPin2);
 Neopixel ledRing(numOfPixels,neopixelPin);
 LCD lcd(lcdAddress,COLLS,ROWS,SDA,SCL);
 
 void setup(){
 
-
-//rewrite motor
+  motor.begin();
+  lcd.off();
+  ledRing.dispOff();
 
 }
 
 void loop(){
 
-ledRing.dispTransactionProcessing(0,0,127);
-  lcd.off();
-
+//ledRing.dispTransactionProcessing(0,0,127);
+//motor.feed();
 }

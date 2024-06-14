@@ -4,22 +4,23 @@
 
 class Motor{
     private:
-         byte _pwmPin1;
-         byte _pwmPin2;
-         byte _encoderPin1;
+        uint8_t _pwmPin1;
+        uint8_t _pwmPin2;
+        uint8_t _encoderPin1;
+        uint8_t _encoderPin2;
 
-         byte _maxSpeed;
-         byte _minSpeed;
+        uint8_t _maxSpeed;
+        uint8_t _minSpeed;
          
-         bool _forwardDir;
+        bool _forwardDir;
 
         const int rpm = 68;
         unsigned long testJamDuration = 5000; //jam test duration
 
     public:
-        Motor( byte pwmPin1, byte pwmPin2, byte maxSpeed, byte minSpeed, bool forwardDir,byte encoderPin1);
-        Motor( byte pwmPin1, byte pwmPin2, byte encoderPin1); 
-        void feed(bool dir,byte speed);
+        Motor( uint8_t pwmPin1, uint8_t pwmPin2,uint8_t encoderPin1,uint8_t encoderPin2, uint8_t maxSpeed, uint8_t minSpeed, bool forwardDir);
+        Motor( uint8_t pwmPin1, uint8_t pwmPin2, uint8_t encoderPin1,uint8_t encoderPin2); 
+        void feed(bool dir,uint8_t speed);
         void feed();
         void stop();
         void begin();
