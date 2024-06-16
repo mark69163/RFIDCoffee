@@ -3,23 +3,26 @@
 #include "Arduino.h"
 
 //real-time clock congfig
-
 //for gmt +2
 #define GMT2  7200
+String operationDate = "";
+String operationTime  = "";
 
 //wi-fi config
-#define SSID    "Mark-wifi-2.4G"
-#define PWD     "MilkaCsoki22"
-#define SERVER  "http://192.168.50.36//esp-post.php"
-#define APIKEY  "tPmAT5Ab3j7F9"
+
+const char* ssid  = "Mark-wifi-2.4G";
+const char* pwd   = "MilkaCsoki22";
+#define SERVER    "http://192.168.50.36//esp-post.php"
+#define APIKEY    "tPmAT5Ab3j7F9"
+
+#define NTPSERVER "pool.ntp.org"
 
 //lcd config
 #define lcdAddress  0x27
 #define COLLS       16
 #define ROWS        2
 
-String operationDate = "";
-String operationTime  = "";
+
 
 /*
 
