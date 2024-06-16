@@ -18,11 +18,8 @@
 #define COLLS       16
 #define ROWS        2
 
-//#define date {"16","06","2024"}
-//#define time {"08","56"}
-
-String operationDate = "16/06/2024";
-String operationTime  = "08:56";
+String operationDate = "";
+String operationTime  = "";
 
 /*
 

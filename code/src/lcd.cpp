@@ -19,7 +19,7 @@ void LCD::printStandby(){
   lcd.print("Operational");
 }
 
-void LCD::printDate(String _date, String _time){
+void LCD::printTimestamp(String _date, String _time){
   lcd.setCursor(0, 1);
   lcd.print(_date);
   lcd.print(" ");
