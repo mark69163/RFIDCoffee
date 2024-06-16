@@ -12,6 +12,7 @@
 #define lcdAddress  0x27
 #define COLLS       16
 #define ROWS        2
+
 /*
 
 Select MCU - either ESP32, otherwise ESP8266
