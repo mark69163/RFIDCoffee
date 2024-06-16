@@ -16,6 +16,6 @@ class Nfc{
     bool selfTest();
     bool read();
     //bool write(String data);
-
+    
 };
 

@@ -17,4 +17,6 @@ bool Nfc::selfTest(){
  
   firmwareVersion = nfc.getFirmwareVersion();
   return false;
+
+  
 }

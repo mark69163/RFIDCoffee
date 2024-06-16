@@ -4,38 +4,50 @@
 #include "neopixel.h"
 #include "lcd.h"
 #include "nfc.h"
+#include <ESP32Time.h>
 
 Motor motor(motPwmPin1,motPwmPin2,motEncPin1,motEncPin2);
 Neopixel ledRing(numOfPixels,neopixelPin);
 LCD lcd(lcdAddress,COLLS,ROWS,SDA,SCL);
 Nfc nfc(nfcIrqPin,nfcReset);
 
+ESP32Time rtc(0);
+
+
 void setup(){
+
+  rtc.setTime(1, 46, 9, 16, 6, 2024);  // 16th Jun 2024 09:24:00
+  //rtc.offset = GMT2;
 
   motor.begin();
   lcd.off();
   ledRing.dispOff();
   nfc.begin(SDA, SCL);
 
-  /*
-  Serial.begin(115200);
-  while (!Serial) delay(10); 
-
-  if (nfc.selfTest()) {
-    Serial.print("Didn't find PN53x board");
-  }
-  else{
-    // Got ok data, print it out!
-      //Serial.println(nfc.firmwareVersion);
-      Serial.print("Found chip PN5"); Serial.println((nfc.firmwareVersion>>24) & 0xFF, HEX);
-      Serial.print("Firmware ver. "); Serial.print((nfc.firmwareVersion>>16) & 0xFF, DEC);
-      Serial.print('.'); Serial.println((nfc.firmwareVersion>>8) & 0xFF, DEC);
-  }
-  */
+  lcd.printStandby();
 
 }
 
 void loop(){
-//ledRing.dispTransactionProcessing(0,0,127);
-//motor.feed();
+  refreshTime();
+  lcd.printDate(operationDate, operationTime);
+}
+
+void refreshTime(){
+
+  if(rtc.getDay() < 10)operationDate="0";
+  operationDate=String(rtc.getDay());
+  operationDate+= "/";
+
+  if(rtc.getMonth()<10)operationDate+="0";
+  operationDate+=String(rtc.getMonth());
+  operationDate+="/";
+  operationDate+=String(rtc.getYear());
+
+  if(rtc.getHour()<10)operationTime="0";
+  operationTime+=String(rtc.getHour(true));
+  operationTime+=":";
+
+  if(rtc.getMinute()<10)operationTime+="0";
+  operationTime+=String(rtc.getMinute());
 }

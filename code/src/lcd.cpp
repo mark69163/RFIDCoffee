@@ -16,10 +16,17 @@ LCD::LCD(uint8_t address,uint8_t cols, uint8_t rows,uint8_t sda, uint8_t scl)
 void LCD::printStandby(){
   lcd.backlight();
   lcd.setCursor(0, 0);
-  lcd.print("Hello World!");
+  lcd.print("Operational");
 }
 
-void LCD::printKeyData(){
+void LCD::printDate(String _date, String _time){
+  lcd.setCursor(0, 1);
+  lcd.print(_date);
+  lcd.print(" ");
+  lcd.print(_time);
+}
+
+void LCD::printKeyData(uint8_t user, uint8_t amount){
 
 }
 

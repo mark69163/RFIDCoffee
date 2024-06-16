@@ -2,6 +2,11 @@
 
 #include "Arduino.h"
 
+//real-time clock congfig
+
+//for gmt +2
+#define GMT2  7200
+
 //wi-fi config
 #define SSID    "Mark-wifi-2.4G"
 #define PWD     "MilkaCsoki22"
@@ -12,6 +17,12 @@
 #define lcdAddress  0x27
 #define COLLS       16
 #define ROWS        2
+
+//#define date {"16","06","2024"}
+//#define time {"08","56"}
+
+String operationDate = "16/06/2024";
+String operationTime  = "08:56";
 
 /*
 
